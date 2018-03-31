@@ -1,3 +1,30 @@
+/*
+* Copyright (c) 2004-2018, Sfecas D. Efstathios <stathizzz@gmail.com>.
+* All rights reserved.
+*
+* Redistribution and use in source and binary forms, with or without
+* modification, are permitted provided that the following conditions are met:
+*     * Redistributions of source code must retain the above copyright
+*       notice, this list of conditions and the following disclaimer.
+*     * Redistributions in binary form must reproduce the above copyright
+*       notice, this list of conditions and the following disclaimer in the
+*       documentation and/or other materials provided with the distribution.
+*     * Neither the name of the IP Lookup Using Level-Compressed Dynamic Tries Project nor the
+*       names of its contributors may be used to endorse or promote products
+*       derived from this software without specific prior written permission.
+*
+* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+* AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+* ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY
+* DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+* (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+* LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+* ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+* (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+* SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*
+*/
 #include  <iostream.h>
 #include "splaytree.h"
 #include <stdio.h>          //for file manipulation
@@ -507,7 +534,6 @@ void main(/*int argc, char * argv[]*/)
 	m_root = new Trie(16,8);
 	cout << m_root << endl;
 	
-	
 	cout << " Elegxos (len > stride1+stride2) " << endl;
 	
 	//10010000 00000111 10100
@@ -515,17 +541,7 @@ void main(/*int argc, char * argv[]*/)
 	
 	//10010000 00000111 0010100
 	m_root->insert(2416388096,23,354564);
-//	m_root->insert(1393008640,19,154);//01010011000001111010000000000000
-	/*
-	cout << " Elegxos (len > stride1 & len < strude1 + stride2) &PE" << endl;
-	m_root->insert((1<<6)+(1<<3)+(1<<1)+(1<<0),7,354);
-    cout << " Elegxos (len < stride1) &PE" << endl;
-	m_root->insert((1<<1),3,1354);
-    cout << " Elegxos (len == stride1) " << endl;
-	m_root->insert((1<<3)+(1<<1),5,676);
-	cout << " Elegxos (len == stride1 + stride2) " << endl;
-	m_root->insert((1<<3)+(1<<1),8,676);
-*/	
+	
 	//10010000 00000111 00101000 01111111
 	cout << m_root->iplookup( 2416388223 ) << endl;	
     
@@ -538,9 +554,6 @@ void main(/*int argc, char * argv[]*/)
 	m_root->insertEntries("aads.C", MAX_ADDRESS);
     m_root->lookupEntries( "aadstraf2","out_ip.txt",  MAX_ADDRESS);
 	
-	
 	printEntries("aads.C","inserted_ips_format.txt", MAX_ADDRESS);
-	//cout << nentries << endl;
-	//cout << sizeof(oop) << endl;
 };
  

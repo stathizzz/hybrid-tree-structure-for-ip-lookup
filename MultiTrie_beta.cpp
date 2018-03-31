@@ -1,20 +1,30 @@
 /*
-   MultiTrie.cpp
-
-   IP Lookup Using Level-Compressed Dynamic Tries. 
-      
-   The code presented in this file has been tested with care but is
-   not guaranteed for any purpose. The writer does not offer any
-   warranties nor does he accept any liabilities with respect to
-   the code.
-
-   Sfikas Efstathios , 15 January 2004.
-
-   Computer Engineering and Informatics Department 
-   Patras University of Patras 
-   sfikas@ceid.upatras.gr
+* Copyright (c) 2004-2018, Sfecas D. Efstathios <stathizzz@gmail.com>.
+* All rights reserved.
+*
+* Redistribution and use in source and binary forms, with or without
+* modification, are permitted provided that the following conditions are met:
+*     * Redistributions of source code must retain the above copyright
+*       notice, this list of conditions and the following disclaimer.
+*     * Redistributions in binary form must reproduce the above copyright
+*       notice, this list of conditions and the following disclaimer in the
+*       documentation and/or other materials provided with the distribution.
+*     * Neither the name of the IP Lookup Using Level-Compressed Dynamic Tries Project nor the
+*       names of its contributors may be used to endorse or promote products
+*       derived from this software without specific prior written permission.
+*
+* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+* AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+* ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY
+* DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+* (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+* LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+* ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+* (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+* SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*
 */
-
 #include  <iostream.h>
 #include <stdio.h>          //for file manipulation
 #include "splaytree.h"
@@ -537,21 +547,16 @@ int MultiTrie::lookupEntries(char *traffic,char *results, int n)
 
 		nentries++;
 	}
-	//fclose(outstream);      fclose(instream);
+	fclose(outstream);      fclose(instream);
 	return nentries;
 };
-
-//#include <ctype.h>
-//#include <strstrea.h>
 
 int main(/*int argc, char *argv[]*/)
 {
 	
-	MultiTrie *rhodian;
-	rhodian = new MultiTrie(16,8);
-	cout << rhodian << endl;
-	
-   /* argc =3;
+	MultiTrie *trie;
+	trie = new MultiTrie(16,8);
+	cout << trie << endl;
 	argv[0]= "multiTrie_beta.exe";
 	argv[1] = "routing_file.txt";
     //int a =20;
@@ -606,49 +611,12 @@ int main(/*int argc, char *argv[]*/)
 		rhodian->lookupEntries(argv[3],"out_ip.txt", *argv[4]);
 		printEntries(argv[1],"inserted_ips_format.txt",  *argv[2]);
 	}
-    */
+   
 
-	//cout << " Elegxos (len > stride1+stride2) " << endl;
-	
-	//10010000 00000111 10100
-	//rhodian->insert(2416418816,21,54);
-	
-	//10010000 00000111 0010100
-	//rhodian->insert(2416388096,23,354564);
-//	rhodian->insert(1393008640,19,154);//01010011000001111010000000000000
-	/*
-	cout << " Elegxos (len > stride1 & len < strude1 + stride2) &PE" << endl;
-	rhodian->insert((1<<6)+(1<<3)+(1<<1)+(1<<0),7,354);
-    cout << " Elegxos (len < stride1) &PE" << endl;
-	rhodian->insert((1<<1),3,1354);
-    cout << " Elegxos (len == stride1) " << endl;
-	rhodian->insert((1<<3)+(1<<1),5,676);
-	cout << " Elegxos (len == stride1 + stride2) " << endl;
-	rhodian->insert((1<<3)+(1<<1),8,676);
-*/	
-	//10010000 00000111 00101000 01111111
-	//cout << rhodian->iplookup( 2416388223 ) << endl;	
-    
-	//10010000 00000111 10100001 11111100
-	//rhodian->insert(2416419324, 23, 9999);	
-    //rhodian->insert(2416419324, 21, 6666);	
-	
-	//cout << rhodian->iplookup( 2416419324 ) << endl;	
-    //argc =3;
-    //char * rgv1 = "routing_small.txt";
-	//char * rgv2 = "traffic_small.txt";
-	//cout <<ADR(51) << endl;
-
-	rhodian->insertEntries("aads.C", MAX_ADDRESS);
-	//rhodian->insert(3452425728, 24, 3223957905);
-	rhodian->lookupEntries("aadstraf2","out_ip.txt", MAX_ADDRESS);
-	
-
+	trie->insertEntries("aads.C", MAX_ADDRESS);
+	trie->lookupEntries("aadstraf2","out_ip.txt", MAX_ADDRESS);
 	printEntries("aads.C","inserted_ips_format.txt", MAX_ADDRESS);
 	
-	//
-	//cout << nentries << endl;
-	//cout << sizeof(oop) << endl;
 	return 0;
 
 };
